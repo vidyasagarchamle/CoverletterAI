@@ -23,7 +23,7 @@ function App() {
 
   useEffect(() => {
     // Listen for auth state changes
-    const { data: { subscription } } = auth.onAuthStateChange((event: string, session: Session | null) => {
+    const { data: { subscription } } = auth.onAuthStateChange((_event: string, session: Session | null) => {
       setUser(session?.user ?? null)
       if (session?.user) {
         setShowAuth(false) // Hide auth dialog when user signs in
