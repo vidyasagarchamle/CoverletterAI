@@ -1,65 +1,91 @@
-# Cover Letter Personalizer
+# CoverletterAI
 
-An AI-powered tool that generates highly personalized cover letters by analyzing your resume and job descriptions.
+An AI-powered cover letter generator that creates personalized, ATS-friendly cover letters based on your resume and job description.
 
 ## Features
 
-- Extract skills and experience from resumes (PDF/DOCX)
-- Analyze job descriptions for key requirements
-- Generate ATS-friendly cover letters
-- Customize tone and personalization level
-- Multiple output formats (PDF, DOCX, plain text)
+- 🤖 AI-powered cover letter generation
+- 📝 ATS-friendly formatting
+- 🎯 Skill matching and keyword optimization
+- 🔒 Secure authentication with Supabase
+- 💾 Save and manage your cover letters
+- 🎨 Beautiful and responsive UI
 
-## Setup
+## Tech Stack
 
-1. Clone the repository
-2. Create a virtual environment:
+### Frontend
+- React with TypeScript
+- Vite
+- Tailwind CSS
+- Framer Motion
+- Supabase Client
+
+### Backend
+- FastAPI
+- OpenAI API
+- Python 3.11+
+
+## Getting Started
+
+### Prerequisites
+- Node.js 16+
+- Python 3.11+
+- OpenAI API key
+- Supabase account and project
+
+### Installation
+
+1. Clone the repository:
 ```bash
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
+git clone https://github.com/vidyasagarchamle/CoverletterAI.git
+cd CoverletterAI
 ```
 
-3. Install dependencies:
+2. Install frontend dependencies:
 ```bash
+cd frontend
+npm install
+```
+
+3. Install backend dependencies:
+```bash
+cd backend
 pip install -r requirements.txt
 ```
 
-4. Create a `.env` file in the root directory with your OpenAI API key:
+4. Set up environment variables:
+
+Create `.env` files in both frontend and backend directories:
+
+Frontend `.env`:
 ```
-OPENAI_API_KEY=your_api_key_here
+VITE_SUPABASE_URL=your_supabase_url
+VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
 ```
 
-## Running the Application
+Backend `.env`:
+```
+OPENAI_API_KEY=your_openai_api_key
+```
 
-1. Start the backend server:
+5. Start the development servers:
+
+Frontend:
+```bash
+cd frontend
+npm run dev
+```
+
+Backend:
 ```bash
 cd backend
 uvicorn main:app --reload
 ```
 
-2. The API will be available at `http://localhost:8000`
+## Contributing
 
-## API Endpoints
+Contributions are welcome! Please feel free to submit a Pull Request.
 
-- `POST /api/parse-resume`: Parse resume file (PDF/DOCX)
-- `POST /api/analyze-job`: Analyze job description
-- `POST /api/generate-cover-letter`: Generate personalized cover letter
-- `GET /api/health`: Health check endpoint
+## License
 
-## Usage Example
-
-```python
-import requests
-
-# Generate a cover letter
-response = requests.post(
-    "http://localhost:8000/api/generate-cover-letter",
-    json={
-        "job_description": "Your job description here...",
-        "resume_text": "Your resume text here...",
-        "tone": "professional",
-        "personalization_level": 0.7
-    }
-)
-
-print(response.json()) 
+This project is licensed under the MIT License - see the LICENSE file for details. 

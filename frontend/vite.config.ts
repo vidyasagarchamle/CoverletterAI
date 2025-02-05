@@ -13,12 +13,21 @@ export default defineConfig({
     host: true,
     proxy: {
       '/api': {
-        target: 'http://localhost:8000',
+        target: process.env.VITE_API_URL || 'http://localhost:8000',
         changeOrigin: true,
       },
     },
   },
-  optimizeDeps: {
-    include: ['@clerk/clerk-react']
+  build: {
+    outDir: 'dist',
+    sourcemap: true,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ['react', 'react-dom', 'framer-motion'],
+          ui: ['@radix-ui/react-label', '@radix-ui/react-select', '@radix-ui/react-toast']
+        }
+      }
+    }
   }
 })

@@ -5,6 +5,7 @@ from typing import Optional
 import os
 from dotenv import load_dotenv
 from openai import OpenAI
+from mangum import Mangum
 
 # Load environment variables
 load_dotenv(override=True)  # Force reload of environment variables
@@ -15,7 +16,7 @@ app = FastAPI(title="Cover Letter Personalizer API")
 # Configure CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173", "http://localhost:5174", "http://localhost:5175", "http://localhost:5176", "http://localhost:5177"],
+    allow_origins=["*"],  # Allow all origins in production
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -149,4 +150,7 @@ async def health_check():
     """
     Health check endpoint
     """
-    return {"status": "healthy"} 
+    return {"status": "healthy"}
+
+# Add Mangum handler
+handler = Mangum(app) 

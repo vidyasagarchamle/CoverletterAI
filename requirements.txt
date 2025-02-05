@@ -8,4 +8,5 @@ python-dotenv==1.0.1
 PyPDF2==3.0.1
 fpdf==1.7.2
 python-jose[cryptography]==3.3.0
-passlib[bcrypt]==1.7.4 
+passlib[bcrypt]==1.7.4
+mangum==0.17.0 
