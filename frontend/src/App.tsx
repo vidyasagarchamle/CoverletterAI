@@ -7,7 +7,7 @@ import { auth } from './lib/supabase'
 import { db } from './lib/supabase'
 import { History } from './components/History'
 import { Auth } from './components/Auth'
-import { User } from '@supabase/supabase-js'
+import { User, Session } from '@supabase/supabase-js'
 
 function App() {
   const [user, setUser] = useState<User | null>(null)
@@ -23,7 +23,7 @@ function App() {
 
   useEffect(() => {
     // Listen for auth state changes
-    const { data: { subscription } } = auth.onAuthStateChange((_event, session) => {
+    const { data: { subscription } } = auth.onAuthStateChange((event: string, session: Session | null) => {
       setUser(session?.user ?? null)
       if (session?.user) {
         setShowAuth(false) // Hide auth dialog when user signs in
