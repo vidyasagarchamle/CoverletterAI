@@ -1,7 +1,5 @@
 {
   "version": 2,
-  "buildCommand": "cd frontend && npm install && npm run build",
-  "outputDirectory": "frontend/dist",
   "builds": [
     {
       "src": "backend/main.py",
@@ -11,7 +9,8 @@
       "src": "frontend/package.json",
       "use": "@vercel/static-build",
       "config": {
-        "distDir": "dist"
+        "distDir": "dist",
+        "buildCommand": "cd frontend && npm install && npm run build"
       }
     }
   ],
@@ -28,5 +27,10 @@
       "src": "/(.*)",
       "dest": "/frontend/dist/index.html"
     }
-  ]
+  ],
+  "env": {
+    "VITE_API_URL": "https://coverletterai.vercel.app/api",
+    "VITE_SUPABASE_URL": "https://qcgmifvrpancjwlpprys.supabase.co",
+    "VITE_SUPABASE_ANON_KEY": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFjZ21pZnZycGFuY2p3bHBwcnlzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Mzg1ODAzMTMsImV4cCI6MjA1NDE1NjMxM30.NOG7TUhnuU5r6rMQPNRMI56-edz35HPCnzop37orFjY"
+  }
 } 
