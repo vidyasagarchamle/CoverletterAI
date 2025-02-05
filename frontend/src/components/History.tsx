@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import { Clock, Copy, Trash2 } from 'lucide-react'
-import { db } from '../lib/supabase'
+import { db } from '../lib/supabase/index'
 import { User } from '@supabase/supabase-js'
 import toast from 'react-hot-toast'
 
