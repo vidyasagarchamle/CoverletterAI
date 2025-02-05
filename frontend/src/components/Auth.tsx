@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Loader2, X, Mail } from 'lucide-react'
 import toast from 'react-hot-toast'
-import { auth } from '@/lib/supabase'
+import { auth } from '../lib/supabase'
 
 interface AuthProps {
   onClose: () => void
